@@ -63,6 +63,7 @@ src
 ├─ App.jsx
 ├─ main.jsx
 └─ index.css
+```
 
 The project uses a **component-based architecture**, separating layout sections and reusable UI components.
 
