@@ -47,6 +47,7 @@ Other Integrations
 
 # Project Structure
 
+```text
 src
 ├─ components
 │ ├─ Navbar.jsx
