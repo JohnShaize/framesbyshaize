@@ -20,24 +20,21 @@ export const Contact = () => {
     }
 
     const formData = new FormData(event.target);
+
+    // Use the user's subject inside the email subject line
+    const inquirySubject = formData.get("inquiry_subject");
+
     formData.append("access_key", accessKey);
-    formData.append("subject", "New inquiry from Frames by Shaize");
+    formData.append(
+      "subject",
+      `New inquiry from Frames by Shaize: ${inquirySubject}`
+    );
     formData.append("from_name", "Frames by Shaize Website");
-
-    // Optional anti-spam hidden field
-    formData.append("botcheck", "");
-
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: json,
+        body: formData,
       });
 
       const data = await response.json();
@@ -180,14 +177,14 @@ export const Contact = () => {
 
               <div>
                 <label
-                  htmlFor="subject"
+                  htmlFor="inquiry_subject"
                   className="mb-2 block text-sm font-medium text-foreground"
                 >
                   Subject
                 </label>
                 <input
-                  id="subject"
-                  name="subject"
+                  id="inquiry_subject"
+                  name="inquiry_subject"
                   type="text"
                   placeholder="Portrait session, collaboration, question..."
                   required
