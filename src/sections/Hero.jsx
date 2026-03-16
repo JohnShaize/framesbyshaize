@@ -1,9 +1,24 @@
+import { useState } from "react";
+
 export const Hero = () => {
+  const [bgLoaded, setBgLoaded] = useState(false);
+  const [cutoutLoaded, setCutoutLoaded] = useState(false);
+
   return (
     <section className="relative min-h-screen bg-background px-4 pb-20 pt-24 sm:px-6 lg:px-8">
       <div className="relative mx-auto h-[calc(100vh-6rem)] max-w-7xl overflow-hidden rounded-[20px] border border-border bg-card shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
         {/* Background image */}
         <div className="absolute inset-0 z-0">
+          {/* soft placeholder */}
+          <div
+            className={`absolute inset-0 transition-opacity duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              bgLoaded ? "opacity-0" : "opacity-100"
+            }`}
+          >
+            <div className="h-full w-full bg-muted" />
+            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-transparent" />
+          </div>
+
           <picture>
             <source
               media="(max-width: 767px)"
@@ -28,7 +43,12 @@ export const Hero = () => {
             <img
               src="/hero/hero-bg2-desktop.webp"
               alt="Hero background"
-              className="h-full w-full object-cover"
+              onLoad={() => setBgLoaded(true)}
+              className={`h-full w-full object-cover transition-all duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                bgLoaded
+                  ? "scale-100 opacity-100 blur-0"
+                  : "scale-[1.035] opacity-0 blur-[8px]"
+              }`}
               loading="eager"
               fetchPriority="high"
               decoding="async"
@@ -40,18 +60,23 @@ export const Hero = () => {
         </div>
 
         {/* Portraits word - BELOW cutout */}
-        <div className="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
+        <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
           <div className="hero-bg-word animate-fade-in mt-[12rem]">
             Portraits
           </div>
         </div>
 
         {/* Subject cutout - ABOVE Portraits word */}
-        <div className="absolute inset-0 z-20 pointer-events-none">
+        <div className="pointer-events-none absolute inset-0 z-20">
           <img
             src="/hero-bg2-cut.png"
             alt="Subject cutout"
-            className="h-full w-full object-cover"
+            onLoad={() => setCutoutLoaded(true)}
+            className={`h-full w-full object-cover transition-all duration-[1000ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              cutoutLoaded
+                ? "scale-100 opacity-100 blur-0"
+                : "scale-[1.015] opacity-0 blur-[6px]"
+            }`}
             loading="eager"
             fetchPriority="high"
             decoding="async"
@@ -59,7 +84,7 @@ export const Hero = () => {
         </div>
 
         {/* Floating particles */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-25">
+        <div className="absolute inset-0 z-25 overflow-hidden pointer-events-none">
           {[...Array(30)].map((_, i) => (
             <div
               key={i}
@@ -76,7 +101,7 @@ export const Hero = () => {
         </div>
 
         {/* Hero content - ABOVE cutout */}
-        <div className="absolute inset-0 z-30 flex flex-col items-center justify-center px-6 text-center -translate-y-[5px] sm:-translate-y-[70px] lg:-translate-y-[60px]">
+        <div className="absolute inset-0 z-30 flex -translate-y-[5px] flex-col items-center justify-center px-6 text-center sm:-translate-y-[70px] lg:-translate-y-[60px]">
           <div className="pointer-events-none relative flex w-full max-w-5xl flex-col items-center">
             <p
               className="
