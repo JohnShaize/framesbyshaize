@@ -216,7 +216,7 @@ export const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-secondary-background disabled:cursor-not-allowed disabled:opacity-70"
+                  className="inline-flex cursor-pointer items-center justify-center rounded-full border border-border bg-primary px-6 py-3 text-sm font-medium text-background shadow-[0_14px_30px_rgba(0,0,0,0.10)] transition-all duration-300 hover:-translate-y-[1px] hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   {isSubmitting ? "Sending..." : "Send Inquiry"}
                 </button>

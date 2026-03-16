@@ -1,6 +1,6 @@
 export const Button = ({ className = "", size = "default", children }) => {
   const baseClasses =
-    "relative overflow-hidden rounded-full font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary bg-primary text-white hover:bg-secondary-background transition-colors shadow-primary/25";
+    "relative overflow-hidden rounded-full font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-colors shadow-primary/25";
 
   const sizeClasses = {
     sm: "px-4 py-2 text-sm",

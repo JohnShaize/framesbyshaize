@@ -14,6 +14,7 @@
     "lucide-react": "^0.577.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.2.1"
   },
   "devDependencies": {
@@ -29,5 +30,13 @@
   },
   "overrides": {
     "vite": "^8.0.0-beta.13"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "optimize:hero": "node scripts/optimize-hero.mjs",
+    "optimize:portfolio": "node scripts/optimize-portfolio.mjs",
+    "optimize:highlights": "node scripts/optimize-highlights.mjs",
+    "optimize:about": "node scripts/optimize-about.mjs"
   }
 }

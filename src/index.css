@@ -2,9 +2,7 @@
 
 @font-face {
   font-family: "TanMeringue";
-  src:
-    url("/src/assets/fonts/TAN MERINGUE.woff2") format("woff2"),
-    url("/src/assets/fonts/TAN MERINGUE.woff2") format("woff");
+  src: url("/src/assets/fonts/TAN MERINGUE.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -39,7 +37,7 @@
 
   --color-card: #fbf8f2;
 
-  --color-primary: #7e8f6a;
+  --color-primary: #63b86a;
   --color-primary-background: #ffffff;
 
   --color-secondary: #dfe5d8;
@@ -73,13 +71,10 @@
   textarea:-webkit-autofill:focus {
     -webkit-text-fill-color: var(--color-foreground);
     caret-color: var(--color-foreground);
-
     -webkit-box-shadow: 0 0 0 1000px var(--color-background) inset;
     box-shadow: 0 0 0 1000px var(--color-background) inset;
-
     background-clip: padding-box;
     border: 1px solid var(--color-border);
-
     transition: background-color 9999s ease-in-out 0s;
   }
 
@@ -155,13 +150,13 @@
   }
 
   .glass-strong {
-  background-color: color-mix(in srgb, var(--color-surface) 62%, transparent);
-  backdrop-filter: blur(24px);
-  border: 1px solid color-mix(in srgb, white 0%, var(--color-border) 92%);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 10px 30px rgba(0, 0, 0, 0.12);
-}
+    background-color: color-mix(in srgb, var(--color-surface) 62%, transparent);
+    backdrop-filter: blur(24px);
+    border: 1px solid color-mix(in srgb, white 0%, var(--color-border) 92%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 10px 30px rgba(0, 0, 0, 0.12);
+  }
 }
 
 @layer utilities {
@@ -185,11 +180,39 @@
     }
   }
 
-  @keyframes mobile-menu-in {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full border border-border bg-primary px-6 py-3 text-sm font-medium text-background shadow-[0_14px_30px_rgba(0,0,0,0.10)] transition-all duration-300 hover:-translate-y-[1px] hover:opacity-95;
+  }
+
+  @keyframes portfolio-reveal {
     from {
       opacity: 0;
-      transform: translateY(-10px) scale(0.985);
-      filter: blur(8px);
+      transform: translateY(20px);
+      filter: blur(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes lightbox-backdrop {
+    from {
+      background-color: rgba(0, 0, 0, 0);
+      backdrop-filter: blur(0px);
+    }
+    to {
+      background-color: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(12px);
+    }
+  }
+
+  @keyframes lightbox-panel {
+    from {
+      opacity: 0;
+      transform: translateY(18px) scale(0.985);
+      filter: blur(5px);
     }
     to {
       opacity: 1;
@@ -198,12 +221,17 @@
     }
   }
 
-  .animate-mobile-menu-in {
-    animation: mobile-menu-in 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-
-  .animate-fade-in {
-    animation: fade-in 4.2s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+  @keyframes mobile-menu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-10px) scale(0.985);
+      filter: blur(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
   }
 
   @keyframes slow-drift {
@@ -238,10 +266,6 @@
     }
   }
 
-  .animate-float-down {
-    animation: float-down 2.2s ease-in-out infinite;
-  }
-
   @keyframes soft-fade-up {
     from {
       opacity: 0;
@@ -253,6 +277,30 @@
       transform: translateY(0);
       filter: blur(0);
     }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 4.2s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+  }
+
+  .animate-portfolio-reveal {
+    animation: portfolio-reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-lightbox-backdrop {
+    animation: lightbox-backdrop 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .animate-lightbox-panel {
+    animation: lightbox-panel 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-mobile-menu-in {
+    animation: mobile-menu-in 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-float-down {
+    animation: float-down 2.2s ease-in-out infinite;
   }
 
   .animate-soft-fade-up {

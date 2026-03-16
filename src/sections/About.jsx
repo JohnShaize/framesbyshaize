@@ -15,11 +15,17 @@ export const About = () => {
           {/* Left image card */}
           <div className="relative">
             <div className="group relative overflow-hidden rounded-[20px] border border-border bg-card shadow-[0_25px_70px_rgba(0,0,0,0.10)]">
-              <img
-                src="/hero.jpg"
-                alt="John Shaize portrait"
-                className="h-[420px] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03] sm:h-[520px] lg:h-[640px]"
-              />
+              <picture>
+                <source srcSet="/about/about-portrait.avif" type="image/avif" />
+                <source srcSet="/about/about-portrait.webp" type="image/webp" />
+                <img
+                  src="/about/about-portrait.webp"
+                  alt="Portrait of John Shaize"
+                  className="h-[420px] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03] sm:h-[520px] lg:h-[640px]"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
             </div>
@@ -42,13 +48,13 @@ export const About = () => {
 
             <div className="mb-3 h-px w-24 bg-border" />
 
-            <p className="mb-3 px-0.5 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
+            <p className="mb-3 max-w-xl px-0.5 text-base leading-7 text-muted-foreground sm:text-lg">
               I’m a Toronto based portrait photographer creating images that
               feel honest, calm, and personal. My work is shaped by light, mood,
               and the small details that make a moment feel real.
             </p>
 
-            <p className="mb-8 px-0.5 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
+            <p className="mb-8 max-w-xl px-0.5 text-base leading-7 text-muted-foreground sm:text-lg">
               Alongside portraits, I also photograph landscapes and quiet
               natural scenes. Frames by Shaize is a space for visual
               storytelling through portraits, atmosphere, and cinematic
@@ -86,10 +92,7 @@ export const About = () => {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <a
-                href="#portfolio"
-                className="inline-flex items-center justify-center rounded-full border border-border bg-primary px-6 py-3 text-sm font-medium text-background shadow-[0_14px_30px_rgba(0,0,0,0.10)] transition-all duration-300 hover:-translate-y-[1px] hover:opacity-95"
-              >
+              <a href="#portfolio" className="btn-primary">
                 View Portfolio
               </a>
 
