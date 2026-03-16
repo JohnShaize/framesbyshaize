@@ -16,7 +16,6 @@ https://framesbyshaize.com
 
 ![Portfolio Preview](./preview.png)
 
-*(You can add a screenshot later if desired.)*
 
 ---
 
